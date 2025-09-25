@@ -7,7 +7,7 @@ on:
       - 'frontend/**'
       - '.github/workflows/**'
   push:
-      branches:
+    branches:
       - develop
       - main
       - 'improve-workflows'
