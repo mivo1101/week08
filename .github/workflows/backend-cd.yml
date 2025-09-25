@@ -55,17 +55,17 @@ jobs:
 
       - name: Set AKS environment variables
         run: |
-          echo "AKS_CLUSTER_NAME=${{ inputs.aks_cluster_name != '' && inputs.aks_cluster_name || github.event.inputs.aks_cluster_name }}" >> $GITHUB_ENV
-          echo "AKS_RESOURCE_GROUP=${{ inputs.aks_resource_group != '' && inputs.aks_resource_group || github.event.inputs.aks_resource_group }}" >> $GITHUB_ENV
-          echo "AKS_ACR_NAME=${{ inputs.aks_acr_name != '' && inputs.aks_acr_name || github.event.inputs.aks_acr_name }}" >> $GITHUB_ENV
+          echo "AKS_CLUSTER_NAME=${{ github.event.inputs.aks_cluster_name }}" >> $GITHUB_ENV
+          echo "AKS_RESOURCE_GROUP=${{ github.event.inputs.aks_resource_group }}" >> $GITHUB_ENV
+          echo "AKS_ACR_NAME=${{ github.event.inputs.aks_acr_name }}" >> $GITHUB_ENV
 
       - name: Set Kubernetes context (get AKS credentials)
         run: |
-          az aks get-credentials --resource-group ${{ github.event.inputs.aks_resource_group }} --name ${{ github.event.inputs.aks_cluster_name }} --overwrite-existing
+          az aks get-credentials --resource-group $AKS_RESOURCE_GROUP --name $AKS_CLUSTER_NAME --overwrite-existing
 
       - name: Attach ACR
         run: |
-          az aks update --name ${{ github.event.inputs.aks_cluster_name }} --resource-group ${{ github.event.inputs.aks_resource_group }} --attach-acr ${{ github.event.inputs.aks_acr_name }}
+          az aks update --name $AKS_CLUSTER_NAME --resource-group $AKS_RESOURCE_GROUP --attach-acr $AKS_ACR_NAME
 
       - name: Deploy Backend Infrastructure (Namespace, ConfigMaps, Secrets, Databases)
         run: |
