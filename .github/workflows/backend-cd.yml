@@ -53,7 +53,7 @@ jobs:
           creds: ${{ secrets.AZURE_CREDENTIALS }}
           enable-AzPSSession: true
 
-      - name: Set AKS variables
+      - name: Set AKS environment variables
         shell: bash
         run: |
           if [ -n "${{ inputs.aks_cluster_name }}" ]; then
