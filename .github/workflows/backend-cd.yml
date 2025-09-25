@@ -132,10 +132,10 @@ jobs:
         run: az logout
 
   trigger_frontend:
-  needs: deploy_backend
-  uses: your-org/your-repo/.github/workflows/frontend-cd.yml@main
-  with:
-    product_api_ip: ${{ needs.deploy_backend.outputs.PRODUCT_API_IP }}
-    order_api_ip: ${{ needs.deploy_backend.outputs.ORDER_API_IP }}
-    aks_cluster_name: mivoaks
-    aks_resource_group: deakinuni
+    needs: deploy_backend
+    uses: your-org/your-repo/.github/workflows/frontend-cd.yml@main
+    with:
+      product_api_ip: ${{ needs.deploy_backend.outputs.PRODUCT_API_IP }}
+      order_api_ip: ${{ needs.deploy_backend.outputs.ORDER_API_IP }}
+      aks_cluster_name: mivoaks
+      aks_resource_group: deakinuni
