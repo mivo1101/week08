@@ -1,6 +1,24 @@
 name: CD - Deploy Backend Services to AKS
 
 on:
+  workflow_call:
+    inputs:
+      aks_cluster_name:
+        description: 'Name of the AKS Cluster to deploy to'
+        required: true
+        type: string
+      aks_resource_group:
+        description: 'Resource Group of the AKS Cluster'
+        required: true
+        type: string
+      aks_acr_name:
+        description: 'Name of ACR'
+        required: true
+        type: string
+    secrets:
+      AZURE_CREDENTIALS:
+        required: true
+
   workflow_dispatch:
     inputs:
       aks_cluster_name:
