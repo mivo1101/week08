@@ -147,17 +147,17 @@ jobs:
           cache-from: type=registry,ref=${{ env.ACR_LOGIN_SERVER }}/frontend:cache
           cache-to: type=inline
 
-    trigger_deploy:
-    name: Trigger backend CD (on main)
-    needs: build_and_push_images
-    if: startsWith(github.ref, 'refs/heads/main') && github.event_name == 'push'
-    uses: ./.github/workflows/backend-cd.yml
-    with:
-      aks_cluster_name: ${{ secrets.AKS_CLUSTER_NAME }}
-      aks_resource_group: ${{ secrets.AKS_RESOURCE_GROUP }}
-      aks_acr_name: ${{ secrets.ACR_NAME }}
-      product_image: ${{ env.ACR_LOGIN_SERVER }}/product_service:${{ env.IMAGE_TAG }}
-      order_image: ${{ env.ACR_LOGIN_SERVER }}/order_service:${{ env.IMAGE_TAG }}
+trigger_deploy:
+name: Trigger backend CD (on main)
+needs: build_and_push_images
+if: startsWith(github.ref, 'refs/heads/main') && github.event_name == 'push'
+uses: ./.github/workflows/backend-cd.yml
+with:
+  aks_cluster_name: ${{ secrets.AKS_CLUSTER_NAME }}
+  aks_resource_group: ${{ secrets.AKS_RESOURCE_GROUP }}
+  aks_acr_name: ${{ secrets.ACR_NAME }}
+  product_image: ${{ env.ACR_LOGIN_SERVER }}/product_service:${{ env.IMAGE_TAG }}
+  order_image: ${{ env.ACR_LOGIN_SERVER }}/order_service:${{ env.IMAGE_TAG }}
 
 
 
