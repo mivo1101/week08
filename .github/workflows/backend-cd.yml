@@ -54,10 +54,17 @@ jobs:
           enable-AzPSSession: true
 
       - name: Set AKS environment variables
+        shell: bash
         run: |
-          echo "AKS_CLUSTER_NAME=${{ github.event.inputs.aks_cluster_name }}" >> $GITHUB_ENV
-          echo "AKS_RESOURCE_GROUP=${{ github.event.inputs.aks_resource_group }}" >> $GITHUB_ENV
-          echo "AKS_ACR_NAME=${{ github.event.inputs.aks_acr_name }}" >> $GITHUB_ENV
+          if [ -n "${{ inputs.aks_cluster_name }}" ]; then
+            echo "AKS_CLUSTER_NAME=${{ inputs.aks_cluster_name }}" >> $GITHUB_ENV
+            echo "AKS_RESOURCE_GROUP=${{ inputs.aks_resource_group }}" >> $GITHUB_ENV
+            echo "AKS_ACR_NAME=${{ inputs.aks_acr_name }}" >> $GITHUB_ENV
+          else
+            echo "AKS_CLUSTER_NAME=${{ github.event.inputs.aks_cluster_name }}" >> $GITHUB_ENV
+            echo "AKS_RESOURCE_GROUP=${{ github.event.inputs.aks_resource_group }}" >> $GITHUB_ENV
+            echo "AKS_ACR_NAME=${{ github.event.inputs.aks_acr_name }}" >> $GITHUB_ENV
+          fi
 
       - name: Set Kubernetes context (get AKS credentials)
         run: |
