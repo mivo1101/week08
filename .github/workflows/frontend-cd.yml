@@ -57,10 +57,6 @@ jobs:
         with:
           creds: ${{ secrets.AZURE_CREDENTIALS }}
 
-      # Login to ACR
-      #- name: Login to Azure Container Registry
-      #  run: az acr login --name ${{ secrets.AZURE_ACR_NAME }}
-
       - name: Inject Backend IPs into Frontend main.js
         run: |
           echo "Injecting IPs into frontend/static/js/main.js"
