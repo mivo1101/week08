@@ -39,9 +39,9 @@ on:
     secrets:
       AZURE_CREDENTIALS:
         required: true
-      ACR_NAME:            # add this
+      ACR_NAME:
         required: true
-      ACR_LOGIN_SERVER:    # add this
+      ACR_LOGIN_SERVER:
         required: true
 
 jobs:
