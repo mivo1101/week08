@@ -67,7 +67,7 @@ jobs:
           cat frontend/main.js
           echo "---------------------------------"
 
-      # Build and Push Docker image for Frontend
+      # Build and Push Docker images for Frontend
       - name: Build and Push Frontend Image
         run: |
           docker build -t ${{ secrets.ACR_LOGIN_SERVER }}/frontend:latest ./frontend/
