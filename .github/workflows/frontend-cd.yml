@@ -48,6 +48,9 @@ jobs:
   deploy_frontend:
     runs-on: ubuntu-latest
     environment: Production
+    env:
+      ACR_NAME: week09acr
+      ACR_LOGIN_SERVER: week09acr.azurecr.io
 
     steps:
       - name: Checkout repository
