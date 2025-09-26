@@ -39,6 +39,10 @@ on:
     secrets:
       AZURE_CREDENTIALS:
         required: true
+      ACR_NAME:            # add this
+        required: true
+      ACR_LOGIN_SERVER:    # add this
+        required: true
 
 jobs:
   deploy_frontend:
