@@ -76,7 +76,7 @@ jobs:
           cat frontend/main.js
           echo "---------------------------------"
 
-      # Login to Azure Container Registry
+      # Login to ACR
       - name: Login to ACR
         run: az acr login --name ${{ secrets.ACR_NAME }}
       
