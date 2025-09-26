@@ -153,9 +153,9 @@ jobs:
     if: startsWith(github.ref, 'refs/heads/main') && github.event_name == 'push'
     uses: ./.github/workflows/backend-cd.yml
     with:
-      aks_cluster_name: mivoaks
+      aks_cluster_name: week09aks
       aks_resource_group: deakinuni
-      aks_acr_name: mivoacr
+      aks_acr_name: week09acr
     secrets:
       AZURE_CREDENTIALS: ${{ secrets.AZURE_CREDENTIALS }}
 
