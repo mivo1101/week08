@@ -23,11 +23,11 @@ spec:
         ports:
         - containerPort: 80
 
-env:
-  - name: REACT_APP_PRODUCT_API
-    value: "http://product-service:8000"
-  - name: REACT_APP_ORDER_API
-    value: "http://order-service:8001"
+        env:
+        - name: REACT_APP_PRODUCT_API
+          value: "http://product-service:8000"
+        - name: REACT_APP_ORDER_API
+          value: "http://order-service:8001"
 
 ---
 apiVersion: v1
