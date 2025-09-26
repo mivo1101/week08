@@ -137,7 +137,7 @@ jobs:
     with:
       product_api_ip: ${{ needs.deploy_backend.outputs.PRODUCT_API_IP }}
       order_api_ip: ${{ needs.deploy_backend.outputs.ORDER_API_IP }}
-      aks_cluster_name: ${{ inputs.aks_cluster_name }}
-      aks_resource_group: ${{ secrets.AZURE_CREDENTIALS }}
+      aks_cluster_name: week09aks
+      aks_resource_group: deakinuni
     secrets:
       AZURE_CREDENTIALS: ${{ secrets.AZURE_CREDENTIALS }}
